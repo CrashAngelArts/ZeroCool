@@ -1,0 +1,12 @@
+{application,any_http,
+             [{compile_env,[{any_http,[httpc_default_opts],error}]},
+              {optional_applications,[req,hackney]},
+              {applications,[kernel,stdlib,elixir,inets,logger,ssl,
+                             tls_certificate_check,req,hackney]},
+              {description,"Elixir library to wrap the main HTTP libraries"},
+              {modules,['Elixir.AnyHttp','Elixir.AnyHttp.Adapters.Httpc',
+                        'Elixir.AnyHttp.Client','Elixir.AnyHttp.Error',
+                        'Elixir.AnyHttp.Response','Elixir.AnyHttp.Utils',
+                        'Elixir.Inspect.AnyHttp.Error']},
+              {registered,[]},
+              {vsn,"0.6.1"}]}.
