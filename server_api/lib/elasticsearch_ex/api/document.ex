@@ -316,4 +316,33 @@ defmodule ElasticsearchEx.Api.Document do
 
     Client.post("#{index}/_update/#{document_id}", nil, document, opts)
   end
+
+
+@doc """
+### GPT Create Index
+
+  def index_json(json_string) do
+    case Jason.decode(json_string) do
+      {:ok, data} ->
+        Index.index(@index_name, "_doc", data)
+        |> handle_response()
+      {:error, _error} ->
+        {:error, :invalid_json}
+    end
+  end
+
+  defp handle_response({:ok, response}) do
+    IO.inspect(response, label: "Elasticsearch response")
+    {:ok, response}
+  end
+
+  defp handle_response({:error, error}) do
+    IO.inspect(error, label: "Elasticsearch error")
+    {:error, error}
+  end
+  
+  json_string = "{\"name\":\"John Doe\", \"age\":30}"
+  ElasticsearchIndexer.index_json(json_string)
+"""
+
 end
